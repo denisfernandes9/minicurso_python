@@ -1,0 +1,1295 @@
+# Minicurso: 
+
+## <center> Inserção da Inteligência Artificial na Avaliação de Políticas Públicas </center>
+
+### * Denis Fernandes Alves
+
+O objetivo deste minicurso é introduzir o Python como ferramenta para análise de dados e sua aplicação para Machine Learning
+
+
+Python não é um programa, mas uma linguagem de programação onde pode-se realizar qualquer tipo de operação em um computador.
+
+Ex.: Contas, Planilhas, Gráficos, Regressões, Machine Learning, ... , Software
+
+### **Imagine o seguinte problema:**
+
+Maria comprou 4 borrachas por R\\$ 0.25 cada, 6 blocos de notas por R\\$ 0.52 cada e dois rolos de fita adesiva por R\\$ 0.99 cada. Quantos itens Maria comprou e quanto eles custaram?
+
+Na calculadora:
+
+4+6+2 = 12
+
+4 $*$ 0.25 + 6 $*$ 0.52 + 2 $*$ 0.99 = 6.10
+
+Podemos utilizar o console do python para resolver tal problema
+
+4 + 2 + 6
+
+4*0.25 + 6*0.52 + 2*0.99 
+
+
+
+Mas, em vez de simplesmente realizar cálculos, podemos declarar cada elemento como uma variável e tornar as coisas mais organizadas
+
+borrachas = 4
+pborracha = 0.25
+blocos = 6
+pblocos = 0.52
+fitas = 2
+pfitas = 0.99
+itens = borrachas + blocos + fitas
+custo = borrachas*pborracha+blocos*pblocos+fitas*pfitas
+print('Quantidade de itens:',itens)
+print('Custo Total:', custo)
+
+itens
+
+Existem algumas regras para se atribuir nomes no PYTHON, são elas:
+
+1. O PYTHON diferencia entre letras maiúsculas e minúsculas.
+2. Os nomes não podem conter espaço.
+3. Existem palavras que são reservadas para o PYTHON.
+
+  **Ex.:**  for, while, if, else, elif.
+ 
+Como o PYTHON “se lembra” das informações passadas podemos usar os dados passados para calcular:
+
+custo_medio = custo/itens
+print("O custo médio é:", custo_medio)
+
+
+
+**OBS.:** Qualquer variável pode ter seu valor alterado. 
+
+**OBS.:** Se você muda um valor de uma variável o PYTHON não recalcula automaticamente o valor de outras variáveis que dependem dessa primeira.
+
+itens = 25
+print(custo_medio)
+
+
+
+Quando o resultado é um valor numérico inteiro o PYTHON o apresenta como um número inteiro. Mas quando o resultado é um número real ele o apresenta arredondando para 16 casas decimais. 
+
+4/2
+
+10/3
+
+
+
+Podemos alterar essa apresentação a qualquer momento utilizando os comandos a seguir.
+
+O PYTHON inclui uma quantidade enorme de funções matemáticas. Tais funções podem ser acessadas importando o módulo de matemática (``math``)
+
+import math
+
+lambda_1 = math.sqrt(4)
+lambda_2 = math.sqrt(2)
+lambda_3 = -math.pi
+print(lambda_1)
+print(lambda_2)
+print(lambda_3)
+
+round(lambda_2,4)
+
+print(math.log(2))
+
+
+
+## Operações básicas com vetores e matrizes
+
+#### Entrada de Vetores Simples
+
+Suponha que desejamos calcular o seno de uma sequência  0, 0.1pi, 0.2pi,..., pi. Um jeito simples de fazer isto é criando uma série (**lista**, conjunto) para esta sequência:
+
+pi = math.pi
+x = [0, 0.1*pi, 0.2*pi, 0.3*pi, 0.4*pi, 0.5*pi, 0.6*pi, 0.7*pi, 0.8*pi, 0.9*pi, pi]
+print(x)
+
+O que acabamos de fazer foi criar uma **lista** com 11 elementos
+
+Uma vez que possuímos tal conjunto, podemos realizar operações sequenciais em seus elementos
+
+Para tal, podemos utilizar a biblioteca [NumPy](https://en.wikipedia.org/wiki/NumPy) que é bastante utilizada na academia para programação numérica
+
+Por exemplo, suponha que queremos calcular o cosseno de todos os elementos da nossa lista. Podemos utilizar o NumPy da seguinte maneira:
+
+import numpy as np
+y = np.cos(x)
+print(y)
+
+Observe que a função cosseno foi aplicada a cada elemento da nossa série.
+
+Podemos acessar cada elemento na nossa série de forma independente.
+
+Por exemplo, podemos acessar os dois primeiros elementos de **x e y**.
+
+**Observe que no python o primeiro elemento de uma lista é sempre indexado com o índice 0.** 
+
+x[0], x[1], y[0], y[1]
+
+
+
+**OBS.:** Uma lista pode conter números ou strings. Uma "String" em linguagem de programação se refere a informação em forma de texto e é definida quando se coloca aspas (ou aspas duplas) em volta de uma informação.
+
+cidades = ["Recife", "Cuiabá", "São Paulo", "Natal", "Fortaleza"]
+
+cidades[0]
+
+
+
+cidades[2]
+
+
+
+Podemos também obter uma sub lista de uma lista utilizando ':' para separar os indexadores do início e do fim da sub-série.
+
+print(x[0:5])
+print("\n")
+print(y[2:7])
+
+
+
+cidades[2:4]
+
+f = ["prof", 58]
+
+f
+
+
+
+### NumPy Arrays
+
+A coisa mais importante que o NumPy define é um **array** N-dimensional formalmente denominado de [numpy.ndarray](http://docs.scipy.org/doc/numpy/reference/arrays.ndarray.html)
+
+Podemos, então, criar os vetores *a e b* como NumPy arrays e obter sua multiplicação da seguinte maneira:
+
+a = np.array([[ 5, 1 ,3], [ 1, 1 ,1], [ 1, 2 ,1]])
+b = np.array([1, 2, 3])
+print(a*b)
+
+NumPy arrays são parecidos com listas exceto que:
+
+- As entradas devem ser *homogeneas* (elementos do mesmo tipo)  
+- Esses tipos devem ser um dos tipos (`dtypes`) suportados pelo NumPy  
+
+
+Os tipos mais importantes são:
+
+- float64: 64 bit número em ponto flutuante  
+- int64: 64 bit inteiro  
+- bool:  8 bit True ou False  
+
+Podemos obter o tipo de um objeto da seguinte maneira:
+
+type(a), type(a[0][0])
+
+a[2]
+
+### Pandas
+
+O Python também pode ler diversos tipos de arquivos texto e planilhas eletrônicas.
+
+Podemos importar o arquivo "auto.csv", que é um arquivo do tipo csv, ou seja um arquivo texto separado por vírgulas, de uma amostra com variáveis sobre carros.
+
+Para podermos importar uma base de dados, devemos utilizar o módulo [pandas]().
+
+O módulo Pandas, possivelmente, é o mais importante para quem trabalha com dados em planilhas. Podemos utiliza-lo para importar dados em diversos formatos (incluindo .dta do Stata, .xlsx, SAS, CSV, ...).
+
+import pandas as pd
+
+Suponha que queiramos, primeiro, criar uma base de dados com números aleatórios:
+
+numeros = np.random.randn(10, 5)
+numeros
+
+Precisamos criar um "pd.DataFrame" com esses números. Um DataFrame é uma "moldura" com os dados inseridos nesta estrutura (Uma planilha)
+
+Observe, porém, que as colunas não possuem nomes.
+
+df1 = pd.DataFrame(numeros)
+
+df1
+
+Para se incluir nomes as colúnas, podemos usar a opção "columns".
+
+df1 = pd.DataFrame(numeros,columns=('num1', 'num2', 'num3', 'num4','num5'))
+
+df1
+
+Agora, é possível trabalhar com colúnas específicas do nosso dataframe:
+
+df1['num2']
+
+Suponha, agora, que queremos importar a base de dados em ".csv". Para tal, utilizaremos a opção "read_csv":
+
+df2 = pd.read_csv("auto.csv")
+
+Vamos listar as 5 primeiras observações.
+
+df2.head(3)
+
+E, utilizando colúnas específicas, podemos obter algumas operações básicas como a soma, valor máximo, mínimo e a média da coluna.
+
+df2.iloc[0]
+
+print('Soma: ',         df2["price"].sum())
+print('Valor máximo: ', df2["price"].max())
+print('Valor mínimo: ', df2["price"].min())
+print('Média',          df2["price"].mean())
+
+
+
+Um outro comando bastante útil é o "value_counts". Com ele podemos contar a frequência de cada valor em um coluna numérica ou não numérica.
+
+df2["foreign"].value_counts()
+
+Pode-se, então, criar uma sub-base de dados baseada em valores específicos de uma coluna. Por exemplo, imagine que queremos apenas as informações dos carros importados.
+
+df2_importado = df2[df2["foreign"] == 'Foreign']
+
+df2_importado
+
+df2_nacional = df2[df2["foreign"] == 'Domestic']
+
+Vamos observar o preço médio do carro importado e do carro nacional
+
+print('Média Importado: ',df2_importado["price"].mean())
+print('Média Nacional: ',df2_nacional["price"].mean())
+
+df2[df2["foreign"] == 'Domestic']["price"].mean()
+
+Resumo estatístico do DataFrame, com quartis, mediana, etc.
+
+resumo = df2.describe()
+
+resumo
+
+resumo.to_csv("resumo.csv")
+
+
+
+
+
+### Estruturas Condicionais if-else-while
+
+Em diversas situações precisamos que sequências de comando sejam executadas condicionalmente. Esta tarefa é realizada usando uma das diversas formas da estrutura if-else-while. A estrutura if-else-while mais simples tem o seguinte formato:
+
+``if expressão:
+    comando``
+
+Neste caso os comandos depois da instrução if são executados apenas se todos os elementos na expressão forem verdadeiros. 
+
+Exemplo:
+
+peras = 3
+custo = peras*50 
+if peras >=5: #desconto de 20% para compras grandes
+    custo = 0.8*custo
+
+print("Custo Total: ",custo)
+
+
+
+No caso em que existem duas alternativas, a estrutura if-else-while toma o seguinte formato:
+
+``if expressão:
+    comandos executados se a expressão for verdadeira
+else:
+    comandos executados se a expressão for falsa``
+
+Neste caso, o primeiro grupo de comandos é executados somente se a expressão for verdadeira e o segundo grupo é executado somente se a expressão for falsa. 
+
+Exemplo:
+
+peras = 10
+custo = peras*50
+if peras >=5: #desconto de 20% para compras grandes
+    custo = 0.8*custo
+else:
+    custo = 0.9*custo
+
+print("Custo Total: ",custo)
+
+
+
+E quando existem três ou mais alternativas, o formato da estrtura if-else-while passa a ser:
+
+``if expressão1:
+    comandos executados se a expressão1 for verdadeira
+elif expressão2:
+    comandos executados se a expressão2 for verdadeira
+elif expressão3:
+    comandos executados se a expressão3 for verdadeira
+    ...
+    ...
+    ...
+else:
+    comandos executados se nenhuma das expressões for verdadeira``
+
+Nestes casos, somente os comandos associados a primeira expressão verdadeira são executados; as expressões seguintes não são testadas e o resto da estrtura if-else-while é ignorada. 
+
+Exemplo:
+
+peras = 3
+custo = peras*50
+
+if (peras >= 5) & (peras < 10): #desconto de 20% 
+    custo = 0.8*custo
+elif (peras >= 10) & (peras < 20): #desconto de 30%
+    custo = 0.7*custo
+elif (peras >= 20) & (peras < 30): #desconto de 40%
+    custo = 0.6*custo
+elif (peras >= 0) & (peras < 5):
+    custo = 0.9*custo
+else: #desconto de 50%
+    custo = 0.50*custo
+    
+print("Custo Total: ",custo)
+
+
+
+### Loops e while loops
+
+#### Loops em for
+
+O "loop em for" executa um grupo de comandos um número fixo de vezes. A forma geral do loop em for é:
+
+``for expressão:
+    comando``
+
+#### Loops em while
+
+Diferentemente do loop em for, o loop em while executa um grupo de coomandos enquanto todos os elementos da expressão forem verdadeiros. A forma geral do loop em while é:
+
+``while expressão:
+    comando``
+
+Exemplo: Loop em for
+
+for i in cidades:
+    print(i)
+
+estados = ['PE', "MT", "SP", "RN"]
+
+for i in cidades:
+    for j in estados:
+        print(i,j)
+
+
+
+
+
+Exemplos: Loop em while
+
+iter = 1 #contador de iterações
+EPS  = 1
+while (1+EPS)>1: #while (1+EPS)>=1:
+    EPS = EPS/2
+    print(iter, EPS)
+    iter += 1
+
+
+
+### Programa para Converter Celcius e Farenheit
+
+val = input('Digite 1 para converter de C para F ou 2 para converter de F para C: ')
+
+if int(val) == 1:
+    c = input('Digite a temperatura em C: ')
+    print('Essa é a temperatura em F: ', (int(c)*1.8+32))
+elif int(val) == 2:
+    f = input('Digite a temperatura em F: ');
+    print('Essa é a temperatura em C: ', ((int(f)-32)/(1.8)))
+else:
+    print('Você deve digitar 1 ou 2!!!')
+
+
+
+nome = input("Qual o seu nome? ")
+print("Olá", nome)
+
+
+
+
+
+### Definição de Funções
+
+Aprenderemos agora a definir funções em Python. As funções irão nos permitir definir objetos de forma a tornar nossas operções, sejam elas qual for, mais simples.
+
+Uma função é composta por um grupo de declarações que realizam uma tarefa específica
+
+Ela deve começar com a palavra chave *def*:
+
+``
+def function_name(parametros):
+	comando(s)
+``
+
+def soma():
+    y = 2+2
+    print(y)
+
+
+
+Podemos, então, chamar a função e ela realizará todo o conjunto de declarações nela contida
+
+soma()
+
+As funções podem receber argumentos. Desta forma podem realizar tarefas condicinal às instruções passadas em cada chamada.
+
+Observe, também, que trocamos o *print* do final por *return*
+
+def minicurso_ufrn(gus):
+    mult = gus*gus
+    summ = gus+gus
+    return (mult,summ)
+
+minicurso_ufrn(3)
+
+
+
+j,k = minicurso_ufrn(10)
+
+for i in range(10):
+    j,k = minicurso_ufrn(i)
+    print(j,k)
+
+j
+
+k
+
+Podemos, agora, combinar funções com condições if,elif,else
+
+def brincadeira(i):
+    if i <=60:
+        if i <=30:
+            print(i, 'é número menor ou igual que 30')
+        else:
+            print(i, 'é número maior que 30 e menor ou igual que 60')
+    elif (i>60) & (i<=70):
+        print(i, "é número entre 60 e 70")
+    elif (i>70) & (i<=90):
+        print(i, "é número entre 70 e 90")
+    else:
+        print(i, "é número maior que 90")
+
+brincadeira(80)
+
+
+
+##  Figuras 
+
+Podemos utilizar o python para construir figuras de forma bem profissional. Podemos configurar nossos plots da maneira que quisermos.
+
+Utilizaremos o pacote [matplotlib]()
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+
+Observem que, como em qualquer plot, precisamos de um domínio e uma imagem. No exemplo abaixo, utilizamos a função cosseno construida no início deste curso. 
+
+plt.plot(x,y)
+plt.xlabel('x')
+plt.title('Função Cos')
+plt.ylabel('cos(x)')
+plt.show()
+
+Aqui, o nosso domínio será construido com a função [linspace](). Ela fornece um vetor de tamanho definido com espaçamento linear entre os valores.
+
+x = np.linspace(-50,50,150)
+y = x**2
+#x = [-2,-1,0,1,2]
+#y = [4,1,0,1,4]
+plt.plot(x,y)
+plt.xlabel('x')
+plt.ylabel('x^2')
+plt.show()
+
+len(x)
+
+
+
+Podemos, também, construir o domínio com a função [arange]() com espaçamento definido.
+
+Observem que podemos incluir quantos plots quisermos numa mesma figura
+
+t = np.arange(0.0, 15.0, 0.02)
+plt.plot(t, np.cos(t), 'r--')
+plt.plot(t, np.sin(t), 'b--')
+plt.show()
+
+t
+
+
+
+Existem diversos tipos de gráficos que podemos utilizar. Se algo não está pré-compilado, sempre podemos criar gráficos do zero.
+
+Abaixo, podemos observar o scatterplot da relação de peso e consumo dos automóveis na base [auto.cvs]() que importamos anteriormente.
+
+plt.scatter(df2['weight'], df2['mpg'], s=30)
+plt.title("Relação Peso x consumo")
+plt.xlabel("Peso")
+plt.ylabel("Consumo")
+plt.show()
+
+
+
+Por fim, observamos aqui o histograma da variável preço
+
+df2["price"].hist()
+plt.show()
+
+
+
+## Data Scraping
+
+Antes de vermos mais detalhadamente o processo de coleta de dados, precisamos entender como funciona a construção das páginas na web. Mais precisamente, precisamos entender a sua linguagem de programação, HTML.
+
+Abaixo, temos um exemplo de uma página simples em HTML
+
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+<h1>My First Heading</h1>
+
+<h1 style="color:blue;">My First Heading</h1>
+
+<h1 style="font-family:verdana;">This is a heading</h1>
+
+<h1 style="font-size:300%;">This is a heading</h1>
+
+<h1 style="text-align:center;">Centered Heading</h1>
+
+
+<p>My first paragraph.</p>
+
+<p style="color:red;">My first paragraph.</p>
+
+<p style="font-size:160%;">This is a paragraph.</p>
+
+<p style="text-align:center;">Centered paragraph.</p>
+
+</body>
+</html>
+
+
+
+Utilizaremos o modulo [*requests*](http://python-requests.org) para realizar requisições para páginas.
+
+import requests
+
+Podemos definir uma variável com o endereço de uma página qualquer. Por exemplo, vamos usar uma página do imdb. 
+
+Uma vez definida, utilizaremos a função *get()* para ler o código fonte da página desejada. 
+
+Depois pegamos o código fonte como texto legível a um humano.
+
+url = 'http://www.imdb.com/title/tt5013056/'
+
+response = requests.get(url)
+
+page_html = response.text
+
+page_html
+
+
+
+Observe que o código fonte é apenas o código HTML que gera a página do imdb. Este texto é uma *string*, ou seja, um texto com elementos não acessíveis. 
+
+Podemos transformar a *string* em um texto em que o python reconheça os *tags* em HTML. Desta forma, transformamos o texto em algo acessível. Para tal, utilizamos o pacote [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+
+from bs4 import BeautifulSoup
+
+Para pegarmos o código fonte da página precisamos definir um *parser*. O *parser* é o método de carregar o código fonte assim como um navegador faria quando se abre a página na web.
+
+Existem vários *parsers*. Ver a [documentação](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) para mais detalhes.
+
+O mais comum é o [html.parser]() e o [lxml]()
+
+soup = BeautifulSoup(page_html, 'lxml')
+
+print(soup.prettify())
+
+
+
+soup.span
+
+
+
+Agora, observe que podemos nos referir a cada tag dentro do código html e pegar as informações desejadas. 
+
+Por exemplo, podemos pegar o título da página
+
+soup.title.text
+
+
+
+Existem diversas maneiras de extrair texto do código html. Podemos nos referir a um determinado tag, assim como fizemos acima, ou procurar por tags dentro do código html.
+
+Iremos utilizar a segunda opção e procurar por todos os tags [&lt;span>](). Observe que o objeto resultante passou a ser uma lista (coleção de objetos), já que existem vários tags encontrados.
+
+nota = soup.find_all("span")
+nota
+
+Uma lista em python contém um ou mais elementos. Podemos nos referir a cada elemento através de sua posição na lista (sempre começando pelo elemento 0 (zero)).
+
+Assim, o elemento de número trinta e quatro se refere a nota do filme Dinkirk. 
+
+len(nota)
+
+nota[33]
+
+
+
+nota[33].text
+
+
+
+Podemos refinar a nossa pesquisa para encontrar de forma mais eficiente a nota dada ao filme. Ao invés de procurar todos os tags [&lt;span>](), vamos encontrar todos os tags [&lt;div>]() que possuas a classe [ratingValue]().
+
+rate = soup.find_all("div",attrs={'class':'ratingValue'})
+print(rate)
+
+
+
+print(rate[0].span.text)
+
+
+
+Vamos aprender um pouco mais sobre listas:
+
+list1 = ['physics', 'chemistry', 1997, 2000];
+list2 = [1, 2, 3, 4, 5, 6, 7 ];
+
+print("list1[0]: ", list1[0])
+print("Primeiro Elemento: ", list1[0])
+
+print("list2[1:5]: ", list2[1:5])
+
+list1[1] = 'economia'
+
+list1
+
+As listas são mutáveis (ao contrário de uma string) e podemos alterar, apagar e adicionar elementos a elas.
+
+del list1[2];
+
+list1
+
+Podemos, também, calcular o tamanho de uma lista utilizando a função [len()](), bem como adinionar duas listas, verificar se existe um elemento específico em uma lista e, ainda, adicionar um novo elemento a uma lista.
+
+len([1, 2, 3])
+
+[1, 2, 3] + [4, 5, 6]
+
+"raquel" in [1, 2, 3,"raquel"]
+
+**IMPORTANTE**: podemos adicionar itens a uma lista
+
+list1.append('wkejfbkef')
+print(list1)
+
+Já que aprendemos sobre listas, podemos aprender o que é um dicionário (ou JSON (JavaScript Object Notation)). Um dicionário é um objeto similar a uma lista mas ele armazena cada item através de uma chave. 
+
+Por exemplo, suponha que queiramos armazenar o nome e a idade dos alunos matriculados neste curso. Podemos criar um dicionário com as chaves *nome* e *idade* para cada um de nós da seguinte maneira
+
+professor = {"nome": "Denis Fernandes", "idade":27}
+
+professor
+
+professor["idade"]
+
+Observe que um dicionário fica encapsulado através de chaves, enquanto uma lista fica encapsulada através de colchetes. 
+
+Podemos, também, combinar as duas. Vamos criar uma lista, com as informações dos alunos deste curso.
+
+
+
+pessoas = [{"nome":"Pedro", "idade":"20"},{"nome":"Evandro", "idade":"23"},{"nome":"Maria", "idade":"21"}]
+
+pessoas
+
+
+
+Podemos preencher o dicionário com novas chaves de entrada
+
+dicionario = {}
+
+dicionario["filme"] = "Piratas do Caribe"
+
+dicionario
+
+
+
+Observem que podemos realizar os procedimentos de coleta de dados realizados acima em um loop. Desta forma, pegariamos milhares de informações de forma bem conveniente.
+
+urls = ['http://www.imdb.com/title/tt5013056/', 
+       'http://www.imdb.com/title/tt1790809/',
+       'http://www.imdb.com/title/tt1596346/',
+       'http://www.imdb.com/title/tt0092099/',
+       'http://www.imdb.com/title/tt0108052/']
+
+for item in urls:
+    print(item)
+
+import time
+
+for item in urls:
+    response = requests.get(item)
+    soup = BeautifulSoup(response.text, 'lxml')
+    name = soup.title.text
+    rate = soup.find_all("div", "ratingValue")[0].span.text
+    obs = soup.find_all("div", "imdbRating")[0].a.text
+    #print(name,obs,rate)
+    print ('%s\t,%s\t,%s\n' % (name,obs,rate))
+    time.sleep(1)
+
+
+
+filmes = []
+for item in urls:
+    dici = {}
+    response = requests.get(item)
+    soup = BeautifulSoup(response.text, 'lxml')
+    name = soup.title.text
+    dici['nome'] = name
+    rate = soup.find_all("div", "ratingValue")[0].span.text
+    dici['nota'] = rate
+    obs = soup.find_all("div", "imdbRating")[0].a.text
+    dici['visu'] = obs
+    filmes.append(dici)
+
+
+
+print(filmes)
+
+
+
+Como possuímos uma lista de dicionários, e eles contém as mesmas chaves, podemos transformar esta lista em um DataFrame através do pandas
+
+
+
+df3 = pd.DataFrame(filmes)
+
+df3
+
+
+
+#### TRY, EXCEPT, ELSE
+
+Utilizaremos *TRY, EXCEPT, ELSE* para captar exceções em nossos códigos
+
+```
+try:
+   You do your operations here;
+except:
+   If there is Exception, then execute this block.
+else:
+   If there is no exception then execute this block. 
+```
+
+Vamos ver um exemplo:
+
+for item in urls:
+    response = requests.get(item)
+    soup = BeautifulSoup(response.text, 'lxml')
+    name = soup.title.text
+    rate = soup.find_all("div", "ratingValue")[0].span.text
+    obs = soup.find_all("div", "imdbRatinggg")[0].a.text # Observer a alteração aqui
+    print ('%s\t,%s\t,%s\n' % (name,obs,rate))
+
+Podemos colocar uma exceção em nosso código para tratar tal erro e seguir adiante
+
+for item in urls:
+    response = requests.get(item)
+    soup = BeautifulSoup(response.text, 'lxml')
+    name = soup.title.text
+    rate = soup.find_all("div", "ratingValue")[0].span.text
+    try:
+        # TENTAR
+        obs = soup.find_all("div", "imdbRatinggg")[0].a.text # Observer a alteração aqui
+    except:
+        # SE DER ERRADO, CONTINUAR
+        obs = '0' 
+    print ('%s\t,%s\t,%s\n' % (name,obs,rate))
+
+
+
+### Salvar informações em arquivos
+
+Como já observamos, ao coletarmos dados da web utilizamos a função *print* para imprimir o resultado na nossa tela.
+
+Podemos salvar estas informações em arquivos de diferentes formatos. Por exemplo, CSV.
+
+import csv
+
+f = open("filmes.csv", 'w') # open("filmes.csv", 'r') ou open("filmes.csv", 'a')
+writer = csv.writer(f)
+
+
+
+for item in urls:
+    response = requests.get(item)
+    soup = BeautifulSoup(response.text, 'lxml')
+    name = soup.title.text
+    rate = soup.find_all("div", "ratingValue")[0].span.text
+    obs = soup.find_all("div", "imdbRating")[0].a.text
+    obs = obs.replace(",",".")
+    print ('%s\t,%s\t,%s\n' % (name,obs,rate))
+    writer.writerow((name,obs,rate))
+
+Sempre que abrirmos um arquivo precisaremos fechar o mesmo no final
+
+f.close()
+
+Exemplo: Função para pegar cotações de moedas em tempo real
+
+def GetCotacoes():
+    req = requests.get('https://economia.uol.com.br/cotacoes/')
+    response = req.text
+    soup_data = BeautifulSoup(response, 'lxml')
+    cotacoes = soup_data.find_all("table",attrs={'class':'data-table tableMoedas'})
+    moedas = cotacoes[0].find_all("tr")
+    for moeda in moedas:
+        dados = moeda.find_all('td')
+        print(dados[0].text, dados[2].text)
+
+
+
+GetCotacoes()
+
+
+
+## Machine Learning e Inteligência Artificial
+
+### O que é Machine Learning? Como funciona?
+
+Entender melhor como funciona a construção de um modelo preditivo
+
+from pandas.plotting import scatter_matrix
+
+Utilizaremos funções do scikit-learn (Modulo em python com diversas funções aplicadas para Machine Learning)
+
+from sklearn import model_selection
+from sklearn.metrics import accuracy_score
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.metrics import confusion_matrix
+
+from PIL import Image
+i = Image.open("algos.png")
+i = i.resize((1000,400))
+display(i)
+
+
+
+i = Image.open("Petal-sepal.jpg")
+i = i.resize((500,500))
+display(i)
+
+Imaginem que queiramos prever o tipo de uma flor e que tenhamos os seguintes dados:
+
+   Variáveis:
+       - sepal length in cm
+       - sepal width in cm
+       - petal length in cm
+       - petal width in cm
+   
+   Classes:
+      - Iris Setosa
+      - Iris Versicolour
+      - Iris Virginica
+
+
+
+
+dataarray = np.array([[5.1, 3.5, 1.4, 0.2, 'Iris-setosa'],
+       [4.9, 3.0, 1.4, 0.2, 'Iris-setosa'],
+       [4.7, 3.2, 1.3, 0.2, 'Iris-setosa'],
+       [4.6, 3.1, 1.5, 0.2, 'Iris-setosa'],
+       [5.0, 3.6, 1.4, 0.2, 'Iris-setosa'],
+       [5.4, 3.9, 1.7, 0.4, 'Iris-setosa'],
+       [4.6, 3.4, 1.4, 0.3, 'Iris-setosa'],
+       [5.0, 3.4, 1.5, 0.2, 'Iris-setosa'],
+       [4.4, 2.9, 1.4, 0.2, 'Iris-setosa'],
+       [4.9, 3.1, 1.5, 0.1, 'Iris-setosa'],
+       [5.4, 3.7, 1.5, 0.2, 'Iris-setosa'],
+       [4.8, 3.4, 1.6, 0.2, 'Iris-setosa'],
+       [4.8, 3.0, 1.4, 0.1, 'Iris-setosa'],
+       [4.3, 3.0, 1.1, 0.1, 'Iris-setosa'],
+       [5.8, 4.0, 1.2, 0.2, 'Iris-setosa'],
+       [5.7, 4.4, 1.5, 0.4, 'Iris-setosa'],
+       [5.4, 3.9, 1.3, 0.4, 'Iris-setosa'],
+       [5.1, 3.5, 1.4, 0.3, 'Iris-setosa'],
+       [5.7, 3.8, 1.7, 0.3, 'Iris-setosa'],
+       [5.1, 3.8, 1.5, 0.3, 'Iris-setosa'],
+       [5.4, 3.4, 1.7, 0.2, 'Iris-setosa'],
+       [5.1, 3.7, 1.5, 0.4, 'Iris-setosa'],
+       [4.6, 3.6, 1.0, 0.2, 'Iris-setosa'],
+       [5.1, 3.3, 1.7, 0.5, 'Iris-setosa'],
+       [4.8, 3.4, 1.9, 0.2, 'Iris-setosa'],
+       [5.0, 3.0, 1.6, 0.2, 'Iris-setosa'],
+       [5.0, 3.4, 1.6, 0.4, 'Iris-setosa'],
+       [5.2, 3.5, 1.5, 0.2, 'Iris-setosa'],
+       [5.2, 3.4, 1.4, 0.2, 'Iris-setosa'],
+       [4.7, 3.2, 1.6, 0.2, 'Iris-setosa'],
+       [4.8, 3.1, 1.6, 0.2, 'Iris-setosa'],
+       [5.4, 3.4, 1.5, 0.4, 'Iris-setosa'],
+       [5.2, 4.1, 1.5, 0.1, 'Iris-setosa'],
+       [5.5, 4.2, 1.4, 0.2, 'Iris-setosa'],
+       [4.9, 3.1, 1.5, 0.1, 'Iris-setosa'],
+       [5.0, 3.2, 1.2, 0.2, 'Iris-setosa'],
+       [5.5, 3.5, 1.3, 0.2, 'Iris-setosa'],
+       [4.9, 3.1, 1.5, 0.1, 'Iris-setosa'],
+       [4.4, 3.0, 1.3, 0.2, 'Iris-setosa'],
+       [5.1, 3.4, 1.5, 0.2, 'Iris-setosa'],
+       [5.0, 3.5, 1.3, 0.3, 'Iris-setosa'],
+       [4.5, 2.3, 1.3, 0.3, 'Iris-setosa'],
+       [4.4, 3.2, 1.3, 0.2, 'Iris-setosa'],
+       [5.0, 3.5, 1.6, 0.6, 'Iris-setosa'],
+       [5.1, 3.8, 1.9, 0.4, 'Iris-setosa'],
+       [4.8, 3.0, 1.4, 0.3, 'Iris-setosa'],
+       [5.1, 3.8, 1.6, 0.2, 'Iris-setosa'],
+       [4.6, 3.2, 1.4, 0.2, 'Iris-setosa'],
+       [5.3, 3.7, 1.5, 0.2, 'Iris-setosa'],
+       [5.0, 3.3, 1.4, 0.2, 'Iris-setosa'],
+       [7.0, 3.2, 4.7, 1.4, 'Iris-versicolor'],
+       [6.4, 3.2, 4.5, 1.5, 'Iris-versicolor'],
+       [6.9, 3.1, 4.9, 1.5, 'Iris-versicolor'],
+       [5.5, 2.3, 4.0, 1.3, 'Iris-versicolor'],
+       [6.5, 2.8, 4.6, 1.5, 'Iris-versicolor'],
+       [5.7, 2.8, 4.5, 1.3, 'Iris-versicolor'],
+       [6.3, 3.3, 4.7, 1.6, 'Iris-versicolor'],
+       [4.9, 2.4, 3.3, 1.0, 'Iris-versicolor'],
+       [6.6, 2.9, 4.6, 1.3, 'Iris-versicolor'],
+       [5.2, 2.7, 3.9, 1.4, 'Iris-versicolor'],
+       [5.0, 2.0, 3.5, 1.0, 'Iris-versicolor'],
+       [5.9, 3.0, 4.2, 1.5, 'Iris-versicolor'],
+       [6.0, 2.2, 4.0, 1.0, 'Iris-versicolor'],
+       [6.1, 2.9, 4.7, 1.4, 'Iris-versicolor'],
+       [5.6, 2.9, 3.6, 1.3, 'Iris-versicolor'],
+       [6.7, 3.1, 4.4, 1.4, 'Iris-versicolor'],
+       [5.6, 3.0, 4.5, 1.5, 'Iris-versicolor'],
+       [5.8, 2.7, 4.1, 1.0, 'Iris-versicolor'],
+       [6.2, 2.2, 4.5, 1.5, 'Iris-versicolor'],
+       [5.6, 2.5, 3.9, 1.1, 'Iris-versicolor'],
+       [5.9, 3.2, 4.8, 1.8, 'Iris-versicolor'],
+       [6.1, 2.8, 4.0, 1.3, 'Iris-versicolor'],
+       [6.3, 2.5, 4.9, 1.5, 'Iris-versicolor'],
+       [6.1, 2.8, 4.7, 1.2, 'Iris-versicolor'],
+       [6.4, 2.9, 4.3, 1.3, 'Iris-versicolor'],
+       [6.6, 3.0, 4.4, 1.4, 'Iris-versicolor'],
+       [6.8, 2.8, 4.8, 1.4, 'Iris-versicolor'],
+       [6.7, 3.0, 5.0, 1.7, 'Iris-versicolor'],
+       [6.0, 2.9, 4.5, 1.5, 'Iris-versicolor'],
+       [5.7, 2.6, 3.5, 1.0, 'Iris-versicolor'],
+       [5.5, 2.4, 3.8, 1.1, 'Iris-versicolor'],
+       [5.5, 2.4, 3.7, 1.0, 'Iris-versicolor'],
+       [5.8, 2.7, 3.9, 1.2, 'Iris-versicolor'],
+       [6.0, 2.7, 5.1, 1.6, 'Iris-versicolor'],
+       [5.4, 3.0, 4.5, 1.5, 'Iris-versicolor'],
+       [6.0, 3.4, 4.5, 1.6, 'Iris-versicolor'],
+       [6.7, 3.1, 4.7, 1.5, 'Iris-versicolor'],
+       [6.3, 2.3, 4.4, 1.3, 'Iris-versicolor'],
+       [5.6, 3.0, 4.1, 1.3, 'Iris-versicolor'],
+       [5.5, 2.5, 4.0, 1.3, 'Iris-versicolor'],
+       [5.5, 2.6, 4.4, 1.2, 'Iris-versicolor'],
+       [6.1, 3.0, 4.6, 1.4, 'Iris-versicolor'],
+       [5.8, 2.6, 4.0, 1.2, 'Iris-versicolor'],
+       [5.0, 2.3, 3.3, 1.0, 'Iris-versicolor'],
+       [5.6, 2.7, 4.2, 1.3, 'Iris-versicolor'],
+       [5.7, 3.0, 4.2, 1.2, 'Iris-versicolor'],
+       [5.7, 2.9, 4.2, 1.3, 'Iris-versicolor'],
+       [6.2, 2.9, 4.3, 1.3, 'Iris-versicolor'],
+       [5.1, 2.5, 3.0, 1.1, 'Iris-versicolor'],
+       [5.7, 2.8, 4.1, 1.3, 'Iris-versicolor'],
+       [6.3, 3.3, 6.0, 2.5, 'Iris-virginica'],
+       [5.8, 2.7, 5.1, 1.9, 'Iris-virginica'],
+       [7.1, 3.0, 5.9, 2.1, 'Iris-virginica'],
+       [6.3, 2.9, 5.6, 1.8, 'Iris-virginica'],
+       [6.5, 3.0, 5.8, 2.2, 'Iris-virginica'],
+       [7.6, 3.0, 6.6, 2.1, 'Iris-virginica'],
+       [4.9, 2.5, 4.5, 1.7, 'Iris-virginica'],
+       [7.3, 2.9, 6.3, 1.8, 'Iris-virginica'],
+       [6.7, 2.5, 5.8, 1.8, 'Iris-virginica'],
+       [7.2, 3.6, 6.1, 2.5, 'Iris-virginica'],
+       [6.5, 3.2, 5.1, 2.0, 'Iris-virginica'],
+       [6.4, 2.7, 5.3, 1.9, 'Iris-virginica'],
+       [6.8, 3.0, 5.5, 2.1, 'Iris-virginica'],
+       [5.7, 2.5, 5.0, 2.0, 'Iris-virginica'],
+       [5.8, 2.8, 5.1, 2.4, 'Iris-virginica'],
+       [6.4, 3.2, 5.3, 2.3, 'Iris-virginica'],
+       [6.5, 3.0, 5.5, 1.8, 'Iris-virginica'],
+       [7.7, 3.8, 6.7, 2.2, 'Iris-virginica'],
+       [7.7, 2.6, 6.9, 2.3, 'Iris-virginica'],
+       [6.0, 2.2, 5.0, 1.5, 'Iris-virginica'],
+       [6.9, 3.2, 5.7, 2.3, 'Iris-virginica'],
+       [5.6, 2.8, 4.9, 2.0, 'Iris-virginica'],
+       [7.7, 2.8, 6.7, 2.0, 'Iris-virginica'],
+       [6.3, 2.7, 4.9, 1.8, 'Iris-virginica'],
+       [6.7, 3.3, 5.7, 2.1, 'Iris-virginica'],
+       [7.2, 3.2, 6.0, 1.8, 'Iris-virginica'],
+       [6.2, 2.8, 4.8, 1.8, 'Iris-virginica'],
+       [6.1, 3.0, 4.9, 1.8, 'Iris-virginica'],
+       [6.4, 2.8, 5.6, 2.1, 'Iris-virginica'],
+       [7.2, 3.0, 5.8, 1.6, 'Iris-virginica'],
+       [7.4, 2.8, 6.1, 1.9, 'Iris-virginica'],
+       [7.9, 3.8, 6.4, 2.0, 'Iris-virginica'],
+       [6.4, 2.8, 5.6, 2.2, 'Iris-virginica'],
+       [6.3, 2.8, 5.1, 1.5, 'Iris-virginica'],
+       [6.1, 2.6, 5.6, 1.4, 'Iris-virginica'],
+       [7.7, 3.0, 6.1, 2.3, 'Iris-virginica'],
+       [6.3, 3.4, 5.6, 2.4, 'Iris-virginica'],
+       [6.4, 3.1, 5.5, 1.8, 'Iris-virginica'],
+       [6.0, 3.0, 4.8, 1.8, 'Iris-virginica'],
+       [6.9, 3.1, 5.4, 2.1, 'Iris-virginica'],
+       [6.7, 3.1, 5.6, 2.4, 'Iris-virginica'],
+       [6.9, 3.1, 5.1, 2.3, 'Iris-virginica'],
+       [5.8, 2.7, 5.1, 1.9, 'Iris-virginica'],
+       [6.8, 3.2, 5.9, 2.3, 'Iris-virginica'],
+       [6.7, 3.3, 5.7, 2.5, 'Iris-virginica'],
+       [6.7, 3.0, 5.2, 2.3, 'Iris-virginica'],
+       [6.3, 2.5, 5.0, 1.9, 'Iris-virginica'],
+       [6.5, 3.0, 5.2, 2.0, 'Iris-virginica'],
+       [6.2, 3.4, 5.4, 2.3, 'Iris-virginica'],
+       [5.9, 3.0, 5.1, 1.8, 'Iris-virginica']], dtype=object)
+
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+df = pd.DataFrame(dataarray)
+df.columns = names
+
+
+
+df.sample(n=20)
+
+df["sepal-length"].head()
+
+
+
+Precisamos converter as colunas com valores para que fique com formato numérico
+
+df["sepal-length"] = pd.to_numeric(df["sepal-length"])
+df["sepal-width"] = pd.to_numeric(df["sepal-width"])
+df["petal-length"] = pd.to_numeric(df["petal-length"])
+df["petal-width"] = pd.to_numeric(df["petal-width"])
+
+
+
+df["sepal-length"].head()
+
+
+
+Tamanho da base de dados:
+
+print("Tamanho:", len(df))
+
+
+
+#### Descrição dos dados
+
+print(df.describe())
+
+
+
+Observações por tipo de flores:
+
+print(df.groupby('class').size())
+
+
+
+### Modelo Probit
+
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+dummie_class = pd.get_dummies(df['class'],prefix='class')
+
+dummie_class.head()
+
+Y = dummie_class["class_Iris-versicolor"]
+
+Y.head()
+
+
+
+X = df[["sepal-length","sepal-width","petal-length","petal-width"]]
+X = sm.add_constant(X)
+
+X.head()
+
+probit_mod = sm.Probit(Y, X)
+probit_res = probit_mod.fit()
+
+print(probit_res.summary2())
+
+
+
+print(probit_res.get_margeff(at='overall', method='dydx').summary())
+
+##### Realizar previsão com o probit
+
+predictions = probit_res.predict(X)
+print(predictions[0:5])
+
+Y[0:5]
+
+
+
+predictions = probit_res.predict([[1,4.2,3.8,1.2,0.5]])
+print(predictions[0:5])
+
+
+
+### Voltando para o nosso exemplo
+
+Observar comportamento dos dados:
+
+df.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False, figsize=(7, 7))
+plt.show()
+
+
+
+df.hist(figsize=(8, 8))
+plt.show()
+
+
+
+scatter_matrix(df, figsize=(8, 8))
+plt.show()
+
+
+
+### Preparar dados para estimar o modelo
+
+Como funciona?
+
+i = Image.open("1.png")
+i = i.resize((900,400))
+display(i)
+
+i = Image.open("2.png")
+i = i.resize((900,400))
+display(i)
+
+i = Image.open("5.png")
+i = i.resize((1000,400))
+display(i)
+
+Como iremos trabalhar com valores, vamos transformar o dataframe em um array
+
+array = df.values
+
+array
+
+Aqui, podemos separar os valores do tipo de flor em questão
+
+X = array[:,0:4]
+
+X
+
+Y = array[:,4]
+
+Y
+
+Finalmente, podemos quebrar a base de dados em 80/20
+
+validation_size = 0.20
+seed = 7
+X_train, X_validation, Y_train, Y_validation = model_selection.train_test_split(X, Y, test_size=validation_size, random_state=seed)
+
+
+
+print("Treinamento")
+print("    Tamanho X_train:", len(X_train))
+print("    Tamanho Y_train:", len(Y_train))
+print("Validação")
+print("    Tamanho X_validation:", len(X_validation))
+print("    Tamanho Y_validation:", len(Y_validation))
+
+
+
+### Treinar Modelo
+
+Devemos, inicialmente, definir um modelo. Neste caso, iremos estimar um Suport Vector Machine
+
+svm = SVC(probability=True)
+#svm = SVC()
+
+Dado que temos nosso modelo importado, podemos passar os dados para ele poder aprender com a base de treinamento
+
+svm.fit(X_train, Y_train)
+
+
+
+### Realizar previsão
+
+Finalmente, podemos realizar previsões com o nosso modelo e testar a sua capacidade
+
+predictions = svm.predict(X_validation)
+print(predictions)
+
+Vamos ver o que era cada uma delas na verdade:
+
+print(Y_validation)
+
+Podemos observar a taxa de acerto comparando os dois resultados:
+
+print(accuracy_score(Y_validation, predictions))
+
+
+
+svm.predict([[4.2,3.8,1.2,0.5]])
+
+
+
+Vamos analisar melhor a acuracia do nosso modelo vendo onde ele mais acerta e onde ele mais erra.
+
+Para tal, iremos calcular a matrix de cofusão:
+
+labels = ["Iris-setosa","Iris-versicolor","Iris-virginica"]
+cm = confusion_matrix(Y_validation, predictions, labels)
+print(cm)
+
+Também observando graficamente:
+
+fig = plt.figure(figsize=(8, 8))
+ax = fig.add_subplot(111)
+cax = ax.matshow(cm)
+plt.title("Confusion Matrix do Classificador")
+fig.colorbar(cax)
+ax.set_xticklabels([''] + labels)
+ax.set_yticklabels([''] + labels)
+plt.xlabel('Predicted')
+plt.ylabel('True')
+plt.show()
+
+
+
+Finalmente, podemos observar as probabilidades associadas a cada uma das observações:
+
+probs = svm.predict_proba(X_validation)
+print(probs)
+
+
+
+### Realizar novas previsões:
+
+Data = [[4.2,3.8,1.2,0.5]]
+pred_data = svm.predict(Data)
+print(pred_data)
+
+svm.predict_proba(Data)
+
+
+
+Data = [[5.9, 3.2, 4.8, 1.8], [4.4, 1.2, 2.1, 0.8]]
+pred_data = svm.predict(Data)
+print(pred_data)
+
+
+
+# FIM
+
